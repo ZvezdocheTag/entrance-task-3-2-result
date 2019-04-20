@@ -28,7 +28,6 @@ function calculatedTimePeriod(sortableItem, duration, id) {
 function fillShedule(value, shedule) {
     for(hour in shedule) {
         shedule[hour] = [value]
-        // shedule[hour].push(value)
     }
     return shedule;
 }
@@ -38,7 +37,6 @@ function fillSheduleCondition(value, shedule, duration) {
         shedule[hour] = []
         if(hour >= 0 && hour < duration) {
             shedule[hour] = [value]
-            // shedule[hour].push(value)
         }
     }
     return shedule;
@@ -48,9 +46,7 @@ function fillSheduleDevice(value, shedule, start, duration) {
     for(hour in shedule) {
         shedule[hour] = []
         if(hour >= start && hour < start + duration) {
-            // shedule[hour] = [...shedule[hour], value]
             shedule[hour] = [value]
-            // shedule[hour].push(value)
         }
     }
     return shedule;
@@ -59,11 +55,10 @@ function fillSheduleDevice(value, shedule, start, duration) {
 function calcOptimalSheduleValues(device, rates, ds) {
     const shedule = getSortableWorkShedule(device, rates)
     const objs = Object.assign({}, ds)
-    // const objs = ds
     let period = 0;
     let result = 0;
     let timePeriod = {};
-    // console.log(objs)
+
     for(let i = 0; i< shedule.length; i+=1) {
         period = shedule[i].to - shedule[i].from;
 
@@ -85,6 +80,5 @@ function calcOptimalSheduleValues(device, rates, ds) {
             
         }
     }
-    // return objs
     return { result, timePeriod };
 }

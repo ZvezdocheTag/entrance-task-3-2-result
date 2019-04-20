@@ -14,7 +14,6 @@ const data = getCalculatedValues(devices, rates, generatedShedule);
 
 function generateConsumedEnergy(data) {
     return data.reduce((curr, next) => {
-        
         return Object.assign(curr, { 
             value: next.result + curr.value, 
             devices: { ...curr.devices, [next.id]: next.result 
